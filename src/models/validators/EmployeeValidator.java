@@ -1,4 +1,4 @@
-package validators;
+package models.validators;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,6 @@ public class EmployeeValidator {
         String code_error = _validateCode(e.getCode(),code_duplicate_check_flag);
         if(!code_error.equals("")){
             errors.add(code_error);
-
         }
 
         String name_error = _validateName(e.getName());
