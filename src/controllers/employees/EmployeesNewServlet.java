@@ -34,7 +34,7 @@ public class EmployeesNewServlet extends HttpServlet {
         request.setAttribute("employee", new Employee());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/new.jsp");
-        response.getWriter().append("Served at: ").append(request.getContextPath());
+        rd.forward(request, response);
     }
 
 }

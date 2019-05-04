@@ -33,24 +33,22 @@ public class EmployeesIndexServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // ページネーションを実装する
         EntityManager em = DBUtil.createEntityManager();
 
-        int page = 1;   //表示するページ数
+        int page = 1;
         try{
-            page = Integer.parseInt(request.getParameter("page"));  //String型からInt型へ
-        }catch(NumberFormatException e){}
-        List<Employee>employees = em.createNamedQuery("getAllEmployees",Employee.class)
-                .setFirstResult(15 * (page - 1))    //何番目から表示するか？
-                .setMaxResults(15)  //何件まで表示するか
-                .getResultList();
+            page = Integer.parseInt(request.getParameter("page"));
+        } catch(NumberFormatException e) { }
+        List<Employee> employees = em.createNamedQuery("getAllEmployees", Employee.class)
+                                     .setFirstResult(15 * (page - 1))
+                                     .setMaxResults(15)
+                                     .getResultList();
 
-        long employees_count =(long)em.createNamedQuery("getEmployeesCount", Long.class)
-                .getSingleResult();
+        long employees_count = (long)em.createNamedQuery("getEmployeesCount", Long.class)
+                                       .getSingleResult();
 
         em.close();
 
-        //リクエストスコープにJSPに渡すデータを格納
         request.setAttribute("employees", employees);
         request.setAttribute("employees_count", employees_count);
         request.setAttribute("page", page);
