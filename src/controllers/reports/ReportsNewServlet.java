@@ -16,13 +16,13 @@ import models.Report;
  * Servlet implementation class ReportServlet
  */
 @WebServlet("/reports/new")
-public class ReportServlet extends HttpServlet {
+public class ReportsNewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReportServlet() {
+    public ReportsNewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
