@@ -89,6 +89,8 @@ public class EmployeesUpdateServlet extends HttpServlet {
                 request.getSession().setAttribute("flush", "更新が完了しました。");
 
                 request.getSession().removeAttribute("employee_id");
+
+                response.sendRedirect(request.getContextPath() + "/employees/index");
         }
     }
 
